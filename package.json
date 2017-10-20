@@ -12,9 +12,9 @@
   ],
   "dependencies": {
     "mysql": "^2.15.0",
-    "newredis": "^0.2.0"
+    "newredis": "^0.3.5"
   },
   "engines": {
-    "node": "8.x.x"
+    "node": ">=8.0"
   }
 }
