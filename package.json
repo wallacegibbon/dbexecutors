@@ -11,8 +11,9 @@
     "redis"
   ],
   "dependencies": {
+    "lvlog": "^1.0.0",
     "mysql": "^2.15.0",
-    "newredis": "^0.3.5"
+    "newredis": "^0.3.6"
   },
   "engines": {
     "node": ">=8.0"

@@ -1,31 +1,37 @@
 const { getRedisExecutor } = require("../lib/redisexecutor");
 
 
-const config = {
-  connectionLimit: 2,
-
-  //keepalivePeriod: 1000*60*3,
-  keepalivePeriod: 1000*3,
-};
-
-const executor = getRedisExecutor(config);
+const executor = getRedisExecutor();
 
 
 async function testCrud() {
   console.log("Testing String.".padEnd(75, "-"));
-  await executor.execute([ "set", "test_string", "hello, redisexecutor" ]);
-  var r = await executor.execute([ "get", "test_string" ]);
+  await executor.set("test_string", "hello, redisexecutor");
+  var r = await executor.get("test_string");
   console.log("r:", r);
 
   console.log("Testing Hash.".padEnd(75, "-"));
-  await executor.execute([ "hmset", "test_hash", "name", "Wallace", "age", 26 ]);
-  var r = await executor.execute([ "hgetall", "test_hash" ]);
+  await executor.hmset("test_hash", { name: "Wallace", age: 26 });
+  var r = await executor.hgetall("test_hash");
   console.log("r:", r);
 }
 
 
+function delay(milliseconds) {
+  return new Promise((res, _) => setTimeout(res, milliseconds));
+}
+
+
 (async function() {
-  await testCrud();
+  while (true) {
+    try {
+      await testCrud();
+    } catch (e) {
+      console.error("Failed testCrud:", e);
+    }
+
+    await delay(1000);
+  }
 
 })().catch(console.error);
 

@@ -16,13 +16,9 @@ const config = {
   user: "root",
   password: "asdf",
   database: "blah",
-
-  //keepalivePeriod: 1000*60*3,
-  keepalivePeriod: 1000*3,
 };
 
 const executor = getMysqlExecutor(config);
-
 
 
 /**
