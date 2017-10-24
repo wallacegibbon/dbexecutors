@@ -1,4 +1,4 @@
-const { getRedisExecutor } = require("../lib/redisexecutor");
+const { getRedisExecutor } = require("..");
 
 
 const executor = getRedisExecutor();

@@ -1,4 +1,4 @@
-const { getMysqlExecutor } = require("../lib/mysqlexecutor");
+const { getMysqlExecutor } = require("..");
 
 
 /**
