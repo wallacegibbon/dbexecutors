@@ -1,19 +1,25 @@
 {
   "name": "dbexecutors",
   "description": "Tool to simplify db operations(mysql, redis)",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": {
     "name": "Wallace Gibbon",
     "email": "wallacegibbon@aliyun.com"
   },
   "keywords": [
     "mysql",
-    "redis"
+    "redis",
+    "pool"
   ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wallacegibbon/dbexecutors.git"
+  },
   "dependencies": {
-    "lvlog": "^1.0.0",
     "mysql": "^2.15.0",
-    "newredis": "^0.3.6"
+    "newredis": "*",
+    "lvlog": "*"
   },
   "engines": {
     "node": ">=8.0"
