@@ -1,7 +1,7 @@
 {
   "name": "dbexecutors",
   "description": "Tool to simplify db operations(mysql, redis)",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "author": {
     "name": "Wallace Gibbon",
     "email": "wallacegibbon@aliyun.com"
