@@ -3,15 +3,15 @@
 
 ## Why this module?
 
-Database manipulations can be very boring, you need to create a connection, send query, close connection, re-establish the broken connection... And usually you need to use a connection pool.
+Database manipulations can be very boring, you need to create a connection, do CRUD, close connection, re-establish the broken connection... And usually you need to use a connection pool.
 
-With this module, you don't need to do those boring things anymore, `dbexecutors` will do those things for you. 
+With this module, you don't need to do those boring things anymore, `dbexecutors` will do them for you.
 
 And this is all you need to do:
 1. Get the Executor.
 2. Execute commands.
 
-Whatever exception you met when executing a command, just `catch` the exception, and do what you usually do when normal exceptions raised. No need to handle any event, or release any resources.
+Whatever exception you met when executing a command, just `catch` the exception, and do what you usually do when normal exceptions raised. There is no need to handle any events, or release any resources.
 
 
 
