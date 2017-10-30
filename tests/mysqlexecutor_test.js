@@ -76,7 +76,7 @@ async function testCrud() {
 async function testErrorOp() {
   while (true) {
     try {
-      await executor.query("SELECTT *");
+      await executor.execute("SELECTT *");
     } catch (e) {
       console.error("Err:", e.message);
     }
