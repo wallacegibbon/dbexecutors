@@ -21,6 +21,12 @@ const config = {
 const executor = getMysqlExecutor(config);
 
 
+
+function delay(milliseconds) {
+  return new Promise((res, _) => setTimeout(res, milliseconds));
+}
+
+
 /**
  * This is a test for mysql's connection pool, not for the executor
  */
@@ -67,10 +73,22 @@ async function testCrud() {
 
 }
 
+async function testErrorOp() {
+  while (true) {
+    try {
+      await executor.query("SELECTT *");
+    } catch (e) {
+      console.error("Err:", e.message);
+    }
+    await delay(1000);
+  }
+}
+
 
 (async function() {
   //await testConnectionLimit();
-  await testCrud();
+  //await testCrud();
+  testErrorOp();
 
 })().catch(console.error);
 
