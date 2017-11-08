@@ -3,6 +3,7 @@ const { getRedisExecutor } = require("..");
 
 const executor = getRedisExecutor({
   connectionLimit: 2,
+  password: "asdf",
 });
 
 //executor.disableLog();
