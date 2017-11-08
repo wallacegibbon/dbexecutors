@@ -1,7 +1,7 @@
 {
   "name": "dbexecutors",
   "description": "Tool to simplify db operations(mysql, redis)",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "author": {
     "name": "Wallace Gibbon",
     "email": "wallacegibbon@aliyun.com"
@@ -17,7 +17,7 @@
     "url": "https://github.com/wallacegibbon/dbexecutors.git"
   },
   "dependencies": {
-    "lvlog": "^1.0.0",
+    "lvlog": "^3.0.0",
     "mysql": "^2.15.0",
     "newredis": "^0.6.2"
   },

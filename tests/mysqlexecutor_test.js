@@ -19,6 +19,7 @@ const config = {
 };
 
 const executor = getMysqlExecutor(config);
+//executor.disableLog();
 
 
 

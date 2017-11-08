@@ -5,6 +5,9 @@ const executor = getRedisExecutor({
   connectionLimit: 2,
 });
 
+//executor.disableLog();
+
+
 
 function delay(milliseconds) {
   return new Promise((res, _) => setTimeout(res, milliseconds));
