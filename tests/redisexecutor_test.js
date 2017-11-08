@@ -34,7 +34,13 @@ async function testCrud() {
 
       console.log("Testing Hash.".padEnd(75, "-"));
       await executor.hmset("test_hash", { name: "Wallace", age: 26 });
+
+      console.log("Testing hgetall.".padEnd(75, "-"));
       var r = await executor.hgetall("test_hash");
+      console.log("r:", r);
+
+      console.log("Testing hmget.".padEnd(75, "-"));
+      var r = await executor.hmget("test_hash", [ "name" ]);
       console.log("r:", r);
 
     } catch (e) {
@@ -47,8 +53,8 @@ async function testCrud() {
 }
 
 (async function() {
-  //await testCrud();
-  await testErrorOp();
+  await testCrud();
+  //await testErrorOp();
 
 })().catch(console.error);
 
