@@ -1,4 +1,4 @@
-const { getRedisExecutor } = require("..");
+const { getRedisExecutor } = require("../..");
 
 
 const executor = getRedisExecutor({
@@ -16,16 +16,6 @@ function delay(milliseconds) {
 
 
 
-async function testErrorOp() {
-  while (true) {
-    try {
-      await executor.execute([ "aaget" ]);
-    } catch (e) {
-      console.error("Err:", e.message);
-    }
-    await delay(1000);
-  }
-}
 
 
 async function testCrud() {
@@ -58,7 +48,6 @@ async function testCrud() {
 
 (async function() {
   await testCrud();
-  //await testErrorOp();
 
 })().catch(console.error);
 

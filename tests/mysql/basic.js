@@ -1,4 +1,4 @@
-const { getMysqlExecutor } = require("..");
+const { getMysqlExecutor } = require("../..");
 
 
 /**
@@ -21,33 +21,6 @@ const config = {
 const executor = getMysqlExecutor(config);
 //executor.disableLog();
 
-
-
-function delay(milliseconds) {
-  return new Promise((res, _) => setTimeout(res, milliseconds));
-}
-
-
-/**
- * This is a test for mysql's connection pool, not for the executor
- */
-async function testConnectionLimit() {
-  // when you "await executor.getConnection()", the code may looks blocked.
-  // But it's not.
-  setInterval(() => console.log("process is not blocked."), 1000);
-
-  process.stdout.write("Trying to get a connection from executor... ");
-  const c1 = await executor.getConnection();
-  console.log("Got.");
-
-  process.stdout.write("Trying to get a connection from executor... ");
-  const c2 = await executor.getConnection();
-  console.log("Got.");
-
-  process.stdout.write("Trying to get a connection from executor... ");
-  const c3 = await executor.getConnection();
-  console.log("Got.");
-}
 
 
 async function testCrud() {
@@ -74,22 +47,9 @@ async function testCrud() {
 
 }
 
-async function testErrorOp() {
-  while (true) {
-    try {
-      await executor.execute("SELECTT *");
-    } catch (e) {
-      console.error("Err:", e.message);
-    }
-    await delay(1000);
-  }
-}
-
 
 (async function() {
-  //await testConnectionLimit();
-  //await testCrud();
-  testErrorOp();
+  await testCrud();
 
 })().catch(console.error);
 
