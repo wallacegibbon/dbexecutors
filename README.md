@@ -3,11 +3,13 @@
 
 ## Why this module?
 
-Database manipulations can be very boring, you need to create a connection, do CRUD, close connection, re-establish the broken connection... And usually you need to use a connection pool.
+Database manipulations can be very boring, you need to create a connection, do CRUD by sending commands to database server, close connection, re-establish the broken connection...
 
-With this module, you don't need to do those boring things anymore, `dbexecutors` will do them for you.
+A connection pool could make it easier, but you still need to `release` the connection after you use it. Sometimes I just want a function that help me execute a sql string, or a redis command. I don't want to care about the network connection stuffs.
 
-And this is all you need to do:
+With this package, the hope comes true.
+
+You don't need to do those boring things anymore, `dbexecutors` will do it for you. And this is all you need to do:
 1. Get the Executor.
 2. Execute commands.
 
