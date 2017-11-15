@@ -33,7 +33,7 @@ async function testErrorOp() {
     try {
       await executor.execute("SELECTT *");
     } catch (e) {
-      console.error("Err:", e.message);
+      console.error("**Err:", e.message);
     }
     await delay(1000);
   }
