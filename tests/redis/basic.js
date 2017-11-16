@@ -7,6 +7,7 @@ const executor = getRedisExecutor({
 });
 
 //executor.disableLog();
+//executor.disableLogColor();
 
 
 

@@ -17,9 +17,9 @@
     "url": "https://github.com/wallacegibbon/dbexecutors.git"
   },
   "dependencies": {
-    "colourlogger": "^1.0.0",
+    "colourlogger": "^1.2.2",
     "mysql": "^2.15.0",
-    "newredis": "^1.0.2"
+    "newredis": "^1.0.3"
   },
   "engines": {
     "node": ">=8.0"
