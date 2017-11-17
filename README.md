@@ -14,10 +14,10 @@ With this package, you don't need to do those boring things anymore, `dbexecutor
 
 For example, with MysqlExecutor, you just need to create a executor first(tell it which server to connect):
 ```js
-const executor = getMysqlExecutor({
+const executor = dbexecutors.getMysqlExecutor({
   host: "localhost",
   port: 3306,
-  password: "1234",
+  password: "asdf",
   //...
 });
 ```
@@ -26,26 +26,29 @@ Then you can use it like this(code should be inside an async function):
 ```js
 //...
 await executor.insert("t1", { name: "x", age: 6, gender: 1 });
+// You can also write:
+await executor.execute('INSERT INTO t1(name, age) VALUES("x", 6)');
+
 //...
-await executor.select("t1", { name: "x" });
+const r = await executor.select("t1", { name: "x" });
 //...
 ```
 
 RedisExecutor works the same way.
 
 ```js
-const executor = getRedisExecutor({
-  host: "locoalhost",
+const executor = dbexecutors.getRedisExecutor({
+  host: "localhost",
   port: 6379,
-  password: "1234",
+  password: "asdf",
 });
 ```
 
 ```js
 //...
-await executor.set("test_string", "hello, redisexecutor");
+await executor.execute([ "set", "test_string", "hello, redisexecutor" ]);
 //...
-await executor.get("test_string");
+const r = await executor.execute([ "get", "test_string" ]);
 //...
 ```
 
