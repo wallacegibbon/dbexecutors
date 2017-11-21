@@ -1,7 +1,7 @@
 {
   "name": "dbexecutors",
   "description": "Simplify database operations",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "author": {
     "name": "Wallace Gibbon",
     "email": "wallacegibbon@aliyun.com"
@@ -19,7 +19,7 @@
   "dependencies": {
     "colourlogger": "^1.2.4",
     "mysql": "^2.15.0",
-    "newredis": "^1.0.7"
+    "newredis": "^1.1.0"
   },
   "engines": {
     "node": ">=7.0"
