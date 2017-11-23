@@ -27,7 +27,7 @@ const executor = getMysqlExecutor(config);
 async function testCrud() {
   var r;
   console.log("Testing INSERT.".padEnd(75, "-"));
-  r = await executor.insert("t1", { name: "Wallace", age: 26, gender: 1 });
+  r = await executor.insert("t1", { name: "Wallace", age: 26, gender: null });
   console.log("insert result:", r);
 
   await executor.insert("t1", { name: "wx", age: 26, gender: 1 });
