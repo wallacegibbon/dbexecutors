@@ -27,15 +27,16 @@ const executor = getMysqlExecutor(config);
 async function testCrud() {
   var r;
   console.log("Testing INSERT.".padEnd(75, "-"));
-  r = await executor.insert("t1", { name: "Wallace", age: 26, gender: null });
+  //r = await executor.insert("t1", { name: 'Wallace', age: 26, gender: null });
+  r = await executor.insert("t1", { name: `Wal"'lace`, age: 26, gender: null });
   console.log("insert result:", r);
 
-  await executor.insert("t1", { name: "wx", age: 26, gender: 1 });
+  await executor.insert("t1", { name: "blah", age: 26, gender: 1 });
   await executor.insert("t1", { name: "Luke", gender: 1 });
   await executor.insert("t1", { name: "Jessica", age: 28 });
 
   console.log("Testing DELETE.".padEnd(75, "-"));
-  r = await executor.remove("t1", { name: "wx" });
+  r = await executor.remove("t1", { name: "blah" });
   console.log("delete result:", r);
 
   console.log("Testing UPDATE.".padEnd(75, "-"));
