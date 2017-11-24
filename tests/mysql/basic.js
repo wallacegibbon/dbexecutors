@@ -55,6 +55,7 @@ async function testCrud() {
 
   r.forEach(o => console.log(o.name));
 
+  await executor.select("t1", "*", { gender: 1 });
 }
 
 
