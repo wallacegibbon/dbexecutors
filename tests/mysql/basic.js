@@ -28,7 +28,7 @@ async function testCrud() {
   var r;
   console.log("Testing INSERT.".padEnd(75, "-"));
   //r = await executor.insert("t1", { name: 'Wallace', age: 26, gender: null });
-  r = await executor.insert("t1", { name: `Wal"'lace`, age: 26, gender: null });
+  r = await executor.insert("t1", { name: `W"""'''e`, age: 26, gender: null });
   console.log("insert result:", r);
 
   await executor.insert("t1", { name: "blah", age: 26, gender: 1 });
@@ -40,13 +40,14 @@ async function testCrud() {
   console.log("delete result:", r);
 
   console.log("Testing UPDATE.".padEnd(75, "-"));
-  await executor.update("t1", { age: 27 }, { name: "Wallace", gender: 1 });
-  r = await executor.update("t1", { gender: 2 }, 'name="Jessica" AND age=28');
+  r = await executor.update("t1", { age: 27 }, { name: "Wallace", gender: 1 });
   console.log("update result:", r);
+  await executor.update("t1", { gender: 2 }, 'name="Jessica" AND age=28');
+  await executor.update("t1", { age: 222 });
 
 
   console.log("Testing SELECT.".padEnd(75, "-"));
-  r = await executor.select("t1", [ "name" ], { gender: 1 },
+  r = await executor.select("t1", [ "name", "age" ], { gender: 1 },
                               "ORDER BY name DESC LIMIT 3 OFFSET 1");
   console.log("select result:", r);
   var { name } = r[0];
