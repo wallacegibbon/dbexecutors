@@ -42,7 +42,7 @@ async function testCrud() {
   console.log("Testing UPDATE.".padEnd(75, "-"));
   r = await executor.update("t1", { age: 27 }, { name: "Wallace", gender: 1 });
   console.log("update result:", r);
-  await executor.update("t1", { gender: 2 }, 'name="Jessica" AND age=28');
+  await executor.update("t1", { gender: 2 }, 'WHERE name="Jessica" AND age=28');
   await executor.update("t1", { age: 222 });
 
 
