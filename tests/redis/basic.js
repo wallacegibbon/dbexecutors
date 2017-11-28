@@ -27,7 +27,7 @@ async function testCrud() {
       var r = await executor.execute([ "get", "test_string" ]);
       console.log("r:", r);
 
-      console.log("Testing Hash.".padEnd(75, "-"));
+      console.log("Testing hmset.".padEnd(75, "-"));
       await executor.hmset("test_hash", { name: "Wallace", age: 26 });
 
       console.log("Testing hgetall.".padEnd(75, "-"));
