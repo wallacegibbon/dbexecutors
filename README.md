@@ -22,8 +22,10 @@ const executor = dbexecutors.getMysqlExecutor({
 });
 ```
 
-Then you can use it like this(code should be inside an async function):
+Then you can use it like this:
 ```js
+(async function() {
+
 //...
 await executor.insert("t1", { name: "x", age: 6, gender: 1 });
 // You can also write:
@@ -32,6 +34,9 @@ await executor.execute('INSERT INTO t1(name, age) VALUES("x", 6)');
 //...
 const r = await executor.select("t1", { name: "x" });
 //...
+
+
+})().catch(console.error);
 ```
 
 RedisExecutor works the same way.
@@ -45,11 +50,16 @@ const executor = dbexecutors.getRedisExecutor({
 ```
 
 ```js
+(async function() {
+
 //...
 await executor.execute([ "set", "test_string", "hello, redisexecutor" ]);
 //...
 const r = await executor.execute([ "get", "test_string" ]);
 //...
+
+
+})().catch(console.error);
 ```
 
 
@@ -66,6 +76,24 @@ Actually Redis may remove transaction in the future and use redis script only.
 
 For mysql, you do need transaction. In this case, you need to get connection from the connection pool and release it after you finishing your query.
 
-It's still the Promise based way, you can see the example in `test/mysql/transaction.js`.
 
+```js
+(async function() {
+
+const conn = await executor.getConnection();
+
+await conn.transactionStart();
+
+try {
+  await conn.execute(`update t1 set age=26 where name="A"`);
+  await conn.execute(`update t1 set age=27 where name="B"`);
+  await conn.transactionCommit();
+} catch (e) {
+  await conn.transactionRollback();
+}
+
+conn.release();
+
+})().catch(console.error);
+```
 
