@@ -52,3 +52,20 @@ const r = await executor.execute([ "get", "test_string" ]);
 //...
 ```
 
+
+## Transaction
+
+For redis, you don't need transaction, you can and should use redis script instead. These are some contents you can find in <https://redis.io/topics/transactions>
+
+> A Redis script is transactional by definition, so everything you can do with a Redis transaction, you can also do with a script, and usually the script will be both simpler and faster.
+
+Actually Redis may remove transaction in the future and use redis script only.
+
+> However it is not impossible that in a non immediate future we'll see that the whole user base is just using scripts. If this happens we may deprecate and finally remove transactions.
+
+
+For mysql, you do need transaction. In this case, you need to get connection from the connection pool and release it after you finishing your query.
+
+It's still the Promise based way, you can see the example in `test/mysql/transaction.js`.
+
+
