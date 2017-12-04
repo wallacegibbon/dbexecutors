@@ -38,11 +38,14 @@ async function testCrud() {
       var r = await executor.hmget("test_hash", [ "name" ]);
       console.log("r:", r);
 
-      console.log("Testing hmget(2).".padEnd(75, "-"));
-      var r = await executor.hmget("test_hash");
-      console.log("r:", r);
+      //console.log("Testing hmget(2).".padEnd(75, "-"));
+      //var r = await executor.hmget("test_hash");
+      //console.log("r:", r);
 
       console.log();
+
+      executor.inspectPool();
+      executor.countFreeConn();
     } catch (e) {
       console.error("Failed testCrud:", e);
     }
