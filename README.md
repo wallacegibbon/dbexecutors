@@ -15,11 +15,11 @@ With this package, you don't need to do those boring things anymore, `dbexecutor
 For example, with MysqlExecutor, you just need to create a executor first(tell it which server to connect):
 ```js
 const executor = dbexecutors.getMysqlExecutor({
-  host: "localhost",
-  port: 3306,
-  password: "asdf",
-  //...
-});
+    host: "localhost",
+    port: 3306,
+    password: "asdf",
+    //...
+})
 ```
 
 Then you can use it like this:
@@ -27,39 +27,39 @@ Then you can use it like this:
 (async function() {
 
 //...
-await executor.insert("t1", { name: "x", age: 6, gender: 1 });
+await executor.insert("t1", { name: "x", age: 6, gender: 1 })
 // You can also write:
-await executor.execute('INSERT INTO t1(name, age) VALUES("x", 6)');
+await executor.execute('INSERT INTO t1(name, age) VALUES("x", 6)')
 
 //...
-const r = await executor.select("t1", { name: "x" });
+const r = await executor.select("t1", { name: "x" })
 //...
 
 
-})().catch(console.error);
+})().catch(console.error)
 ```
 
 RedisExecutor works the same way.
 
 ```js
 const executor = dbexecutors.getRedisExecutor({
-  host: "localhost",
-  port: 6379,
-  password: "asdf",
-});
+    host: "localhost",
+    port: 6379,
+    password: "asdf",
+})
 ```
 
 ```js
 (async function() {
 
 //...
-await executor.execute([ "set", "test_string", "hello, redisexecutor" ]);
+await executor.execute([ "set", "test_string", "hello, redisexecutor" ])
 //...
-const r = await executor.execute([ "get", "test_string" ]);
+const r = await executor.execute([ "get", "test_string" ])
 //...
 
 
-})().catch(console.error);
+})().catch(console.error)
 ```
 
 
@@ -80,20 +80,20 @@ For mysql, you do need transaction. In this case, you need to get connection fro
 ```js
 (async function() {
 
-const conn = await executor.getConnection();
+const conn = await executor.getConnection()
 
-await conn.transactionStart();
+await conn.transactionStart()
 
 try {
-  await conn.execute(`update t1 set age=26 where name="A"`);
-  await conn.execute(`update t1 set age=27 where name="B"`);
-  await conn.transactionCommit();
+    await conn.execute(`update t1 set age=26 where name="A"`)
+    await conn.execute(`update t1 set age=27 where name="B"`)
+    await conn.transactionCommit()
 } catch (e) {
-  await conn.transactionRollback();
+    await conn.transactionRollback()
 }
 
-conn.release();
+conn.release()
 
-})().catch(console.error);
+})().catch(console.error)
 ```
 
