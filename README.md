@@ -15,10 +15,10 @@ With this package, you don't need to do those boring things anymore, `dbexecutor
 For example, with MysqlExecutor, you just need to create a executor first(tell it which server to connect):
 ```js
 const executor = dbexecutors.getMysqlExecutor({
-    host: "localhost",
-    port: 3306,
-    password: "asdf",
-    //...
+  host: "localhost",
+  port: 3306,
+  password: "asdf",
+  //...
 })
 ```
 
@@ -43,9 +43,9 @@ RedisExecutor works the same way.
 
 ```js
 const executor = dbexecutors.getRedisExecutor({
-    host: "localhost",
-    port: 6379,
-    password: "asdf",
+  host: "localhost",
+  port: 6379,
+  password: "asdf",
 })
 ```
 
@@ -85,11 +85,11 @@ const conn = await executor.getConnection()
 await conn.transactionStart()
 
 try {
-    await conn.execute(`update t1 set age=26 where name="A"`)
-    await conn.execute(`update t1 set age=27 where name="B"`)
-    await conn.transactionCommit()
+  await conn.execute(`update t1 set age=26 where name="A"`)
+  await conn.execute(`update t1 set age=27 where name="B"`)
+  await conn.transactionCommit()
 } catch (e) {
-    await conn.transactionRollback()
+  await conn.transactionRollback()
 }
 
 conn.release()

@@ -10,12 +10,12 @@ const { getMysqlExecutor } = require("../..")
  */
 
 const config = {
-    connectionLimit: 2,
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "asdf",
-    database: "blah",
+  connectionLimit: 2,
+  host: "localhost",
+  port: 3306,
+  user: "root",
+  password: "asdf",
+  database: "blah",
 }
 
 const executor = getMysqlExecutor(config)
@@ -24,24 +24,24 @@ const executor = getMysqlExecutor(config)
 
 
 function delay(milliseconds) {
-    return new Promise((res, _) => setTimeout(res, milliseconds))
+  return new Promise((res, _) => setTimeout(res, milliseconds))
 }
 
 
 async function testErrorOp() {
-    while (true) {
-        try {
-            await executor.execute("SELECTT *")
-        } catch (e) {
-            console.error("**Err:", e.message)
-        }
-        await delay(1000)
+  while (true) {
+    try {
+      await executor.execute("SELECTT *")
+    } catch (e) {
+      console.error("**Err:", e.message)
     }
+    await delay(1000)
+  }
 }
 
 
 (async function () {
-    testErrorOp()
+  testErrorOp()
 
 })().catch(console.error)
 
